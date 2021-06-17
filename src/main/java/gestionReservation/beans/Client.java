@@ -6,12 +6,27 @@ public class Client {
 
 	private int id;
 	private String cin;
+	private String nom;
 	private String prenom;
 	private String date_naissance;
 	private String lieu_naissance;
 	private String addresse;
 	private String etat_civil;
 	private String nationalite;
+	
+	public Client(int id,String cin, String nom, String prenom, String date_naissance, String lieu_naissance, String addresse, String etat_civil, String nationalite) {
+		super();
+		this.id=id;
+		this.nom = cin;
+		this.nom = nom;
+		this.prenom =prenom;
+		this.date_naissance = date_naissance;
+		this.lieu_naissance = lieu_naissance;
+		this.addresse = addresse;
+		this.etat_civil = etat_civil;
+		this.nationalite = nationalite;
+		
+	}
 	public int getId() {
 		return id;
 	}
@@ -23,6 +38,12 @@ public class Client {
 	}
 	public void setCin(String cin) {
 		this.cin = cin;
+	}
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 	public String getPrenom() {
 		return prenom;

@@ -39,5 +39,9 @@ public class DaoFactory {
 		return new CategoryDaoImpl(this);
 	}
 	
+	public ClientDao getClientDao(DaoFactory dao) {
+		return new ClientDaoImpl(this);
+	}
+	
 
 }

@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                                <div class="col-md-6">
+                <div class="col-md-6">
                     <div id="gestion_clien" class="container-fluid">
                                 <div class="card">
                                     <div class="card-header">Clients Valable</div>
@@ -168,7 +168,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                         <c:forEach items="${clients }" var="category">
+                                         <c:forEach items="${clients}" var="Client">
                                                 <tr>
                                                     <td>
                                                         <label class="au-checkbox">
@@ -178,18 +178,18 @@
                                                     </td>
                                                   
                                                     <td>
-                                                        ${category.getId()}
+                                                        ${client.getId()}
                                                     </td>
                                                     <td>
-                                                     ${category.getDescription()}
+                                                     ${client.getNom()}
                                                     </td>
                                                     <td>
                                                        <div class="table-data-feature">
                                                       
-                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit" href="<%=request.getContextPath()%>/gestionCategory?id=${category.getId()}">
+                                                        <a class="item" data-toggle="tooltip" data-placement="top" title="Edit" href="<%=request.getContextPath()%>/gestionClient?id=${client.getId()}">
                                                             <i class="zmdi zmdi-edit"></i>
                                                         </a>
-                                                        <a href="<%=request.getContextPath()%>/gestionCategory?id=${category.getId()}&action=delete" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <a href="<%=request.getContextPath()%>/gestionClient?id=${client.getId()}&action=delete" class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
                                                         </a>
                                                      
