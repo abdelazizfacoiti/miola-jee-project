@@ -89,7 +89,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                         <c:forEach items="${categories }" var="category">
+                                         <c:forEach items="${categories}" var="category">
                                                 <tr>
                                                     <td>
                                                         <label class="au-checkbox">

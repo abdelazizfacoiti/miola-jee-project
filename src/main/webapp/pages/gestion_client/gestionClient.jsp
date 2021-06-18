@@ -38,6 +38,21 @@
                                         <div class="card-title">
                                         </div>
                                         <hr>
+                                        <%  if(request.getAttribute("success")!=null){
+                                	   if(Boolean.parseBoolean(request.getAttribute("success").toString())==true){
+                                	   %>
+                                	   <div style="padding: 25px;">
+                                       <div class="sufee-alert alert with-close alert-success alert-dismissible fade show" role="alert">
+											categorie ${request.getAttribute("action").toString()!=null ?"supprimèe":"enregistrèe" } avec succès 
+										</div> 
+										</div>     
+										<% }else{%>
+										 <div style="padding: 25px;">
+                                       <div class="alert alert-danger" role="alert">
+											un probleme est survenu,veuillez reessayer plus tard
+										</div> 
+										</div> 
+										<% }}%>   
                                         <form action="" method="post" novalidate="novalidate">
                                          <div class="row">
                                                 <div class="col-6">
@@ -150,7 +165,7 @@
                                     </div>
                                   
 
-                                    <div class="table-responsive table-data">
+                                    <div class="table-data">
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -161,14 +176,14 @@
                                                         </label>
                                                     </td>
                                                     <td>ID</td>
-                                                    <td>Description</td>
-                                                    <td>Actions</td>
-                                                   
+                                                    <td>Cin</td>
+                                                    <td>Nom</td>
+                                                    <td>Prenom</td>
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                         <c:forEach items="${clients}" var="Client">
+                                         <c:forEach items="${clients}" var="client">
                                                 <tr>
                                                     <td>
                                                         <label class="au-checkbox">
@@ -181,7 +196,13 @@
                                                         ${client.getId()}
                                                     </td>
                                                     <td>
-                                                     ${client.getNom()}
+                                                    	${client.getCin()}
+                                                    </td>
+                                                    <td>
+                                                    	${client.getNom()}
+                                                    </td>
+                                                    <td>
+                                                    	${client.getPrenom()}
                                                     </td>
                                                     <td>
                                                        <div class="table-data-feature">

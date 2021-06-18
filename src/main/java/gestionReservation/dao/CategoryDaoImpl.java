@@ -16,9 +16,7 @@ public class CategoryDaoImpl implements CategoryDao{
 	public CategoryDaoImpl(DaoFactory dao) {
 		super();
 		this.dao = dao;
-	}
-
-	
+	}	
 	@Override
 	public boolean ajouter(Category c) {
 		
@@ -28,8 +26,7 @@ public class CategoryDaoImpl implements CategoryDao{
 		try {
 			cnx=dao.getConnection();
 			stm=cnx.prepareStatement("insert into category(description) values('"+c.getDescription()+"')");
-			result=stm.executeUpdate();		
-			
+			result=stm.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.getStackTrace();
@@ -56,8 +53,6 @@ public class CategoryDaoImpl implements CategoryDao{
 			// TODO Auto-generated catch block
 			e.getStackTrace();
 		}
-		
-		
 		return list;
 	}
 
@@ -80,8 +75,6 @@ public class CategoryDaoImpl implements CategoryDao{
 			// TODO Auto-generated catch block
 			e.getStackTrace();
 		}
-		
-		
 		return category;
 	}
 
@@ -125,12 +118,4 @@ public class CategoryDaoImpl implements CategoryDao{
 		return result>0;
 		
 	}
-		
-		
-		
-		
-		
-		
-	
-
 }

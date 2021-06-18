@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gestionReservation.beans.Category;
 import gestionReservation.beans.Client;
 
 public class ClientDaoImpl implements ClientDao {
@@ -43,22 +44,35 @@ public class ClientDaoImpl implements ClientDao {
 		List<Client> list = new ArrayList<Client>();
 		try {
 			cnx=dao.getConnection();
-			stm=cnx.prepareStatement("select * from client");
+			stm=cnx.prepareStatement("SELECT * FROM `client`");
 			result=stm.executeQuery();	
 			while(result.next())
-				list.add(new Client(result.getInt("id"),result.getString("nom"),result.getString("cin"),result.getString("prenom"),result.getString("date_naissance"),result.getString("lieu_naissance"),result.getString("addresse"),result.getString("etat_civil"),result.getString("nationalite")));
+				list.add(new Client(result.getInt("client_id"),result.getString("cin"),result.getString("nom"),result.getString("prenom"),result.getString("date_naissance"),result.getString("lieu_naissance"),result.getString("addresse"),result.getString("etat_civil"),result.getString("nationalite")));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.getStackTrace();
 		}
-		
-		
 		return list;
 	}
 
 	public Client getClient(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection cnx=null;
+		PreparedStatement stm;
+		ResultSet result = null;
+		Client client = null;
+	
+		try {
+			cnx=dao.getConnection();
+			stm=cnx.prepareStatement("select * from client where client_id="+id);
+			result=stm.executeQuery();	
+			if(result.next())
+				client=new Client(result.getInt("client_id"),result.getString("cin"),result.getString("nom"),result.getString("prenom"),result.getString("date_naissance"),result.getString("lieu_naissance"),result.getString("addresse"),result.getString("etat_civil"),result.getString("nationalite"));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getStackTrace();
+		}
+		return client;
 	}
 
 	@Override

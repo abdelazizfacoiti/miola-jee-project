@@ -1,7 +1,5 @@
 package gestionReservation.beans;
 
-import java.sql.Date;
-
 public class Client {
 
 	private int id;

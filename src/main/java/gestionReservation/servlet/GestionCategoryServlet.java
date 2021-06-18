@@ -61,7 +61,6 @@ public class GestionCategoryServlet extends HttpServlet {
 	    request.setAttribute("categories", list);
 	    request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -78,7 +77,6 @@ public class GestionCategoryServlet extends HttpServlet {
 		b=categoryDao.ajouter(c);
 		request.setAttribute("success", b);
 		doGet(request, response);
-		
 	}
 
 }

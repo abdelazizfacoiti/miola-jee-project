@@ -1,6 +1,7 @@
 package gestionReservation.servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import gestionReservation.beans.Category;
 import gestionReservation.beans.Client;
+import gestionReservation.dao.CategoryDao;
 import gestionReservation.dao.ClientDao;
 import gestionReservation.dao.DaoFactory;
 
@@ -43,24 +45,10 @@ public class GestionClient extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/pages/gestion_client/gestionClient.jsp").forward(request,response);
 		
-	    Client client=null;
-	    if(request.getParameter("id")!=null) {
-	    	   client=clientDao.getClient(Integer.parseInt(request.getParameter("id")));
-	  	     request.setAttribute("client", client); 
-	  	     if(request.getParameter("action")!=null) {
-			    	if(request.getParameter("action").equals("delete")) {
-			    		boolean b=clientDao.supprimer(Integer.parseInt(request.getParameter("id")));
-			    		request.setAttribute("success", b);
-			    		request.setAttribute("action", "delete");
-			    	}
-	  	     }
-	  
-	    }
 	    List<Client> list=clientDao.lister();
-	    request.setAttribute("client", list);
-	    request.getRequestDispatcher("index.jsp").forward(request, response);
+	    request.setAttribute("clients", list);
+	    request.getRequestDispatcher("/pages/gestion_client/gestionClient.jsp").forward(request,response);
 	}
 
 	/**
