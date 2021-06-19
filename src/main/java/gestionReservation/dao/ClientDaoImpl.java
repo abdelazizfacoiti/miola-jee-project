@@ -63,7 +63,7 @@ public class ClientDaoImpl implements ClientDao {
 	
 		try {
 			cnx=dao.getConnection();
-			stm=cnx.prepareStatement("select * from client where client_id="+id);
+			stm=cnx.prepareStatement("select * from client where `client_id`="+id);
 			result=stm.executeQuery();	
 			if(result.next())
 				client=new Client(result.getInt("client_id"),result.getString("cin"),result.getString("nom"),result.getString("prenom"),result.getString("date_naissance"),result.getString("lieu_naissance"),result.getString("addresse"),result.getString("etat_civil"),result.getString("nationalite"));

@@ -46,6 +46,22 @@ public class GestionClient extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		Client client=null;
+	    if(request.getParameter("id")!=null) {
+	    	   client=clientDao.getClient(Integer.parseInt(request.getParameter("id")));
+	  	     request.setAttribute("client", client); 
+	  	     if(request.getParameter("action")!=null) {
+	    	if(request.getParameter("action").equals("delete")) {
+	    		boolean b=clientDao.supprimer(Integer.parseInt(request.getParameter("id")));
+	    		request.setAttribute("success", b);
+	    		request.setAttribute("action", "delete");
+	    	}
+	  	     }
+	  
+	    }
+	    
+	    
 	    List<Client> list=clientDao.lister();
 	    request.setAttribute("clients", list);
 	    request.getRequestDispatcher("/pages/gestion_client/gestionClient.jsp").forward(request,response);
@@ -56,7 +72,7 @@ public class GestionClient extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				Client c=new Client(0, null, null, null, null, null, null, null, null);
+				Client c=new Client();
 				boolean b;
 				c.setCin(request.getParameter("cin"));
 				c.setNom(request.getParameter("nom"));
