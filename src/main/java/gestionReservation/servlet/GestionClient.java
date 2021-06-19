@@ -56,7 +56,23 @@ public class GestionClient extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+				Client c=new Client(0, null, null, null, null, null, null, null, null);
+				boolean b;
+				c.setCin(request.getParameter("cin"));
+				c.setNom(request.getParameter("nom"));
+				c.setPrenom(request.getParameter("prenom"));
+				c.setDate_naissance(request.getParameter("date_naissance"));
+				c.setLieu_naissance(request.getParameter("lieu_naissance"));
+				c.setAddresse(request.getParameter("adresse"));
+				c.setEtat_civil(request.getParameter("etat_civile"));
+				if(request.getParameter("id")!=null) {
+				c.setId(Integer.parseInt(request.getParameter("id")));
+				b=clientDao.modifier(c);
+				}
+				else
+				b=clientDao.ajouter(c);
+				request.setAttribute("success", b);
+				doGet(request, response);
 	
 	}
 

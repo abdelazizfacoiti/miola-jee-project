@@ -25,6 +25,7 @@ public class Client {
 		this.nationalite = nationalite;
 		
 	}
+
 	public int getId() {
 		return id;
 	}

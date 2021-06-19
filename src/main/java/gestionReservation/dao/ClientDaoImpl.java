@@ -77,8 +77,20 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public boolean modifier(Client c) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection cnx=null;
+		PreparedStatement stm;
+		int result = 0;
+		try {
+			cnx=dao.getConnection();
+			stm=cnx.prepareStatement("UPDATE `client` SET `cin`="+c.getCin()+",`nom`="+c.getNom()+",`prenom`=c."+c.getPrenom()+",`date_naissance`=[value-5],`lieu_naissance`="+c.getLieu_naissance()+",`addresse`="+c.getAddresse()+",`etat_civil`="+c.getEtat_civil()+",`nationalite`="+c.getNationalite()+" WHERE 1"+c.getId());
+			result=stm.executeUpdate();		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getStackTrace();
+		}
+		System.out.println("modified"+(result>0));
+		return result>0;
 	}
 
 	@Override
