@@ -43,7 +43,7 @@
                                 	   %>
                                 	   <div style="padding: 25px;">
                                        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show" role="alert">
-											categorie ${request.getAttribute("action").toString()!=null ?"supprimèe":"enregistrèe" } avec succès 
+											client${request.getAttribute("action").toString()!=null ?"supprimèe":"enregistrèe" } avec succès 
 										</div> 
 										</div>     
 										<% }else{%>

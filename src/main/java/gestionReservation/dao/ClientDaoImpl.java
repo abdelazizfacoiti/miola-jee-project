@@ -95,8 +95,20 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public boolean supprimer(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection cnx=null;
+		PreparedStatement stm;
+		int result = 0;
+		try {
+			cnx=dao.getConnection();
+			stm=cnx.prepareStatement("delete from client where client_id="+id);
+			result=stm.executeUpdate();		
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.getStackTrace();
+		}
+		System.out.println("deleted"+(result>0));
+		return result>0;
 	}
 
 }
